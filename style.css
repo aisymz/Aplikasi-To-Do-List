@@ -1,0 +1,728 @@
+/* --- Variabel Warna & Font Global --- */
+:root {
+    --brand-red: #ef4444;
+    --brand-yellow: #facc15;
+    --brand-light-green: #86efac;
+    --brand-purple: #a855f7;
+    --brand-blue: #60a5fa;
+    --brand-pink: #f472b6;
+    --brand-black: #1f2937;
+    --card-background: #ffffff;
+}
+
+/* --- Gaya Dasar Halaman --- */
+body {
+
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('Background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    color: var(--brand-black);
+    margin: 0;
+    padding: 0;
+}
+
+/* Menargetkan header utama aplikasi */
+header.pixel-block {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    /* Agar padding tidak menambah lebar */
+    border-radius: 0;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
+}
+
+/* Mengatur gaya teks judul di dalam header */
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* '.container' adalah pembungkus utama untuk semua konten di bawah header */
+.container {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    /* Memberi jarak dari header dan dari tepi layar di mode mobile */
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+/* '.pixel-block' adalah gaya dasar untuk semua kotak konten utama */
+.pixel-block {
+    border: 3px solid var(--brand-black);
+    box-shadow: 8px 8px 0px var(--brand-black);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: none;
+
+}
+
+/* --- Header Informasi (Profil & Waktu) --- */
+/* Mengatur layout untuk pembungkus info profil dan waktu */
+.info-header {
+    display: flex;
+    align-items: stretch;
+    gap: 2.5rem;
+}
+
+
+.info-header>.pixel-block {
+    margin-bottom: 0;
+}
+
+.info-header>section {
+    flex: 100px !important;
+    width: 30000px !important;
+    flex-shrink: 0;
+    /* Mencegah kolom menyusut */
+
+}
+
+/* Mengatur kotak profil (yang memiliki background kuning) */
+section.pixel-block.bg-brand-yellow {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Mengatur teks nama di dalam kotak profil */
+section .name {
+    white-space: nowrap;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Mengatur teks jabatan di dalam kotak profil */
+section .role {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Mengatur kotak penampil waktu dan tanggal */
+#time-display.pixel-block {
+    background-color: rgba(255, 255, 255, 0.7);
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.3;
+}
+
+/* Mengatur teks hari (misal: "Rabu") di dalam kotak waktu */
+#time-display strong {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Mengatur teks tanggal (misal: "23 Juli 2025") di dalam kotak waktu */
+#time-display span {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* --- Formulir & Daftar Tugas --- */
+/* Mengatur kotak formulir penambahan tugas */
+section.pixel-block.bg-brand-purple {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+}
+
+/* Mengatur kotak daftar "To Do" */
+section.pixel-block.bg-brand-blue {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding-bottom: 42px;
+}
+
+/* Mengatur gaya untuk semua judul section (To Do, Done, dll) */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+/* Mengatur layout formulir */
+#task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 450px;
+}
+
+/* Mengatur gaya teks label (seperti "Tulis Target") */
+#task-form label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* Menambahkan ikon asterisk (*) berwarna merah setelah teks label */
+#task-form label::after {
+    content: ' *';
+    color: var(--brand-red);
+    font-weight: bold;
+}
+
+/* Mengatur gaya untuk semua input di dalam form */
+#task-form textarea,
+#task-form select,
+#task-form input[type="date"] {
+    width: 136%;
+    box-sizing: border-box;
+    padding: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    border: 3px solid var(--brand-black);
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* Memberi efek highlight saat input form diklik/aktif */
+#task-form input:focus,
+#task-form textarea:focus,
+#task-form select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--brand-blue);
+}
+
+/* Mengatur agar textarea bisa diubah ukurannya secara vertikal */
+#task-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Mengatur gaya tombol "SUBMIT" */
+.submit-btn {
+    width: 122px;
+    padding: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background-color: rgb(18, 204, 18);
+    color: white;
+    border-radius: 6px;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    align-self: center;
+    margin-right: -189px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.submit-btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 6px 6px 0px var(--brand-black);
+    box-shadow: none;
+}
+
+/* --- Daftar & Kartu Tugas --- */
+/* Pembungkus untuk semua kartu tugas di dalam kolom 'To Do' atau 'Done' */
+
+.task-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Pembungkus judul "Done" dan tombol "HAPUS SEMUA" */
+.done-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.done-header .pixel-block {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    box-shadow: 6px 6px 0px var(--brand-black);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.done-header .pixel-block:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0px var(--brand-black);
+}
+
+.task-item {
+    padding: 15px;
+    border: 3px solid var(--brand-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    transform: rotate(-2deg);
+    width: 200px;
+    border-radius: 8px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+
+
+/* Mendefinisikan animasi fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Aturan baru untuk kartu yang aktif/dipilih */
+.task-item.active {
+    cursor: grabbing;
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.8);
+    z-index: 10;
+}
+
+/* Gaya untuk teks deskripsi tugas di dalam kartu */
+.task-item p.task-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+/* Gaya untuk teks tugas yang sudah selesai (dicoret) */
+.task-item.completed p.task-text {
+    text-decoration: line-through;
+    opacity: none;
+}
+
+/* Gaya untuk info meta (tanggal dibuat dan deadline) */
+.task-item .task-meta {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+}
+
+/* Gaya khusus untuk info meta jika tugas sudah lewat waktu (overdue) */
+.task-item.overdue .task-meta {
+    color: var(--brand-red);
+    font-weight: 700;
+}
+
+
+.task-item .task-meta {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+/* Mengatur warna untuk teks 'Dibuat' */
+.task-meta .meta-created {
+    color: black;
+}
+
+/* Mengatur warna untuk teks 'Deadline' */
+.task-meta .meta-deadline {
+    color: #b91c1c;
+}
+
+/* Memastikan teks 'Dibuat' tidak tebal */
+.task-meta .meta-created {
+    font-weight: 450 !important;
+}
+
+/* Membuat teks 'Deadline' menjadi tebal */
+.task-meta .meta-deadline {
+    font-weight: 450 !important;
+}
+
+/* Gaya untuk tag prioritas (High, Medium, Low) */
+.priority-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    color: white;
+    text-transform: uppercase;
+    border-bottom: 200px;
+}
+
+/* Styling Item Tugas (Kartu) */
+.task-item {
+    padding: 15px;
+    border: 3px solid var(--brand-black);
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    transform: rotate(-2deg);
+    /* Memberi efek sedikit miring */
+    width: 200px;
+    
+}
+
+/* Atur warna berbeda untuk 'To Do' dan 'Done' */
+#todo-list .task-item {
+    background-color: white;
+    transform: rotate(-2deg);
+    padding: -200px;
+}
+
+/* Memberi warna latar berbeda untuk kartu di kolom "Done" */
+#done-list .task-item {
+    background-color: white;
+    transform: rotate(2deg);
+}
+
+/* Efek saat kursor mouse berada di atas kartu tugas */
+.task-item:hover {
+    transform: rotate(0deg) translate(2px, 2px);
+}
+
+/* Mengatur gaya checkbox agar terlihat kustom */
+.task-item input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    border: 3px solid var(--brand-black);
+    border-radius: 0;
+    cursor: pointer;
+    position: relative;
+    top: -3px;
+}
+
+.task-item input[type="checkbox"]:checked::before {
+    content: '✔';
+    position: absolute;
+    top: -5px;
+    left: 3px;
+    font-size: 1.8rem;
+    color: var(--brand-black);
+}
+
+.priority-tag.high {
+    background-color: #fa0202;
+    /* Merah yang lebih gelap */
+    color: white;
+}
+
+.priority-tag.medium {
+    background-color: #e68210;
+    color: white;
+}
+
+.priority-tag.low {
+    background-color: #1abd0f;
+    color: white;
+}
+
+.task-item input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    margin-top: 5px;
+    width: 1.5em;
+    height: 1.5em;
+    border: 3px solid var(--brand-black);
+    border-radius: 4px;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    flex-shrink: 0;
+}
+
+.task-item input[type="checkbox"]::before {
+    content: "";
+    width: 0.8em;
+    height: 0.8em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #22c55e;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.task-item input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+/* Menargetkan kolom "Done" */
+section.pixel-block.bg-brand-light-green {
+    background-color: rgba(255, 255, 255, 0.7);
+    /* Contoh: Pink transparan */
+}
+
+/* Styling untuk Tombol Hapus Semua */
+#delete-all-btn {
+    background-color: rgb(228, 11, 11);
+    color: white;
+    border: none;
+    box-shadow: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Mengatur gaya tombol "HAPUS SEMUA" saat disentuh kursor */
+#delete-all-btn:hover {
+    background-color: red;
+}
+
+/* --- STYLING PANAH DROPDOWN KUSTOM --- */
+/* Pembungkus untuk select/dropdown agar panahnya bisa dikustomisasi */
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+}
+
+/* 2. Sembunyikan panah asli dari browser */
+#task-form select#priority-input {
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 2.5rem;
+}
+
+/* 3. Buat dan posisikan panah kustom */
+.select-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -9rem;
+    transform: translateY(-50%);
+    width: 1.2em;
+    height: 0.8em;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='black'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+/* Styling baru untuk memindahkan checkbox ke kanan */
+.task-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+}
+
+/* --- ATURAN RESPONSIVE UNTUK MOBILE --- */
+@media screen and (max-width: 768px) {
+
+
+    /* Mengatur tinggi header di mobile */
+    header.pixel-block {
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+    }
+
+    /* 1. Mengatur Header Info (Nama & Tanggal) menjadi vertikal */
+    .info-header {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Mengatasi lebar aneh pada header info */
+    .info-header>section {
+        width: auto !important;
+        height: 100px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    /* Membuat teks nama menjadi responsif di mobile */
+    section .name {
+        white-space: normal;
+        font-size: 1.25rem;
+    }
+
+    /* Beri jarak pada teks di dalam kotak tanggal */
+    .info-header #time-display {
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 10px;
+    }
+
+
+
+    .info-header .bg-brand-yellow {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .info-header #time-display {
+        align-items: center;
+        line-height: 1.0;
+        padding-top: 20px;
+        padding-bottom: 25px;
+    }
+
+    .info-header .bg-brand-yellow h2,
+    .info-header .bg-brand-yellow p {
+        margin: 0;
+    }
+
+    /* 2. Menyesuaikan Formulir */
+    #task-form textarea,
+    #task-form select,
+    #task-form input[type="date"] {
+        width: 100%;
+    }
+
+    .submit-btn {
+        margin-right: 0;
+        align-self: center;
+    }
+
+    /* Memperbaiki posisi panah dropdown */
+    .select-wrapper::after {
+        right: 1rem;
+    }
+
+    /* 3. Membuat Kartu Tugas menjadi Full-Width */
+    .task-item {
+        width: 230px;
+        box-sizing: border-box;
+        box-shadow: 5px 5px 0px var(--brand-black);
+
+        /* OPSIONAL: Ganti font agar mirip gambar */
+        font-family: 'Poppins', sans-serif;
+        height: 160px;
+    }
+
+    .task-item>div:last-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        /* Memberi jarak dari teks tugas di atasnya */
+    }
+
+    /* Atur ulang transform untuk 'To Do' dan 'Done' list di mobile */
+    #todo-list .task-item {
+
+        transform: rotate(-2deg);
+    }
+
+    #done-list .task-item {
+        transform: rotate(2deg);
+    }
+
+    /* Nonaktifkan efek gerak saat hover di mobile */
+    .task-item:hover {
+        transform: rotate(-10deg);
+    }
+
+    /* 4. Penyesuaian Minor Lainnya */
+    .container {
+        gap: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Mengatur ulang layout kolom "Done" */
+    /* Mengatur layout kolom "Done" dengan struktur HTML baru */
+    /* Tambahkan di dalam @media screen and (max-width: 768px) */
+
+    /* 1. Jadikan kolom "Done" sebagai acuan posisi */
+    section.pixel-block.bg-brand-light-green {
+        position: relative;
+        padding-bottom: 5rem;
+    }
+
+    /* Mengedit Form Input */
+    #task-form {
+        max-width: none;
+    }
+
+    /* 2. Atur SEMUA input dan wrapper-nya agar seragam */
+    #task-form textarea,
+    #task-form .select-wrapper,
+    #task-form input[type="date"] {
+        width: 100%;
+        box-sizing: border-box;
+        max-width: 100%;
+
+    }
+
+    /* Pastikan elemen <select> juga mengisi penuh pembungkusnya */
+    #task-form select {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* 2. Atur ulang layout header "Done" di mobile */
+    .done-header {
+        justify-content: flex-start;
+    }
+
+    /* 3. "Angkat" tombol dan tempel di bagian bawah */
+    #delete-all-btn {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+    }
+
+    /* Samakan layout internal kotak nama dengan kotak tanggal */
+    section.pixel-block.bg-brand-yellow {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Pastikan konten kotak nama tetap di tengah secara vertikal */
+    section.pixel-block.bg-brand-yellow {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Hapus margin default pada teks nama dan jabatan */
+    section.pixel-block.bg-brand-yellow h2,
+    section.pixel-block.bg-brand-yellow p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    /* Membuat teks nama tugas menjadi tebal di mobile */
+    .task-item p.task-text {
+        font-weight: 700;
+    }
+
+    /* Mengatur ketebalan font meta di mobile */
+    .task-meta .meta-created {
+        font-weight: 549;
+    }
+
+    .task-meta .meta-deadline {
+        font-weight: 549;
+    }
+
+}
