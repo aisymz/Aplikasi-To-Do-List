@@ -114,21 +114,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const taskHTML = `
             <div class="${taskItemClasses}" data-id="${task.id}">
-                <div>
-                    <span class="priority-tag ${task.priority}">${task.priority.toUpperCase()}</span>
-                    <p class="task-text">${task.text}</p>
-                </div>
-                <div>
-                    <div class="task-meta">
-                        <span class="meta-created">Dibuat: ${new Date(task.createdAt).toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</span><br>
-                        <span class="meta-deadline">Deadline: ${deadlineFormatted}</span>
-                    </div>
-                    <div class="task-footer">
-                        <input type="checkbox" ${isCompleted ? 'checked' : ''}>
-                    </div>
-                </div>
-            </div>
-        `;
+    <div>
+        <div class="task-header">
+            <span class="priority-tag ${task.priority}">${task.priority.toUpperCase()}</span>
+            <button class="delete-task-btn" aria-label="Hapus Tugas">
+    <img src="trash icon.png" alt="Hapus">
+</button>
+        </div>
+        <p class="task-text">${task.text}</p>
+    </div>
+    <div>
+        <div class="task-meta">
+            <span class="meta-created">Dibuat: ${new Date(task.createdAt).toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</span><br>
+            <span class="meta-deadline">Deadline: ${deadlineFormatted}</span>
+        </div>
+        <div class="task-footer">
+            <input type="checkbox" ${isCompleted ? 'checked' : ''}>
+        </div>
+    </div>
+</div>
+`;
 
             if (isCompleted) {
                 doneList.insertAdjacentHTML('beforeend', taskHTML);
@@ -181,9 +186,38 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- EVENT LISTENERS ---
-    taskForm.addEventListener('submit', addTask);
-    deleteAllBtn.addEventListener('click', deleteAllTasks);
-    document.querySelector('.container').addEventListener('click', toggleTaskCompletion);
+
+// 1. Listener untuk form submit
+taskForm.addEventListener('submit', addTask);
+
+// 2. Listener untuk tombol "HAPUS SEMUA"
+deleteAllBtn.addEventListener('click', deleteAllTasks);
+
+// 3. Listener utama untuk semua aksi di dalam kartu (centang dan hapus)
+document.querySelector('.container').addEventListener('click', (e) => {
+    // Logika untuk mencentang/membatalkan centang checkbox
+    if (e.target.matches('input[type="checkbox"]')) {
+        const taskItem = e.target.closest('.task-item');
+        const taskId = Number(taskItem.dataset.id);
+        const task = tasks.find(t => t.id === taskId);
+        if (task) {
+            task.completed = !task.completed;
+            renderTasks();
+        }
+    }
+
+    // Logika untuk tombol hapus per tugas
+    if (e.target.closest('.delete-task-btn')) {
+        const taskItem = e.target.closest('.task-item');
+        const taskId = Number(taskItem.dataset.id);
+        
+        // Panggil fungsi deleteTask yang sudah dibuat
+        if (confirm('Anda yakin ingin menghapus tugas ini?')) {
+            tasks = tasks.filter(task => task.id !== taskId);
+            renderTasks(); // Panggil renderTasks untuk memperbarui tampilan
+        }
+    }
+});
 
     // --- INITIALIZATION ---
     updateTime();
