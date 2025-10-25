@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="task-header">
             <span class="priority-tag ${task.priority}">${task.priority.toUpperCase()}</span>
             <button class="delete-task-btn" aria-label="Hapus Tugas">
-    <img src="trash icon.png" alt="Hapus">
+    <img src="trash-icon.png" alt="Hapus">
 </button>
         </div>
         <p class="task-text">${task.text}</p>
