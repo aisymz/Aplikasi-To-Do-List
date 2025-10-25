@@ -12,11 +12,9 @@
 </head>
 
 <body>
-
     <header class="pixel-block bg-brand-red text-center">
         <h1>TO-DO-LIST</h1>
     </header>
-
     <div class="container">
         <div class="info-header">
             <section class="pixel-block bg-brand-yellow">
@@ -26,13 +24,11 @@
             <section id="time-display" class="pixel-block bg-brand-light-green text-center">
             </section>
         </div>
-
         <section class="pixel-block bg-brand-purple">
             <h2 class="section-title">Apa Misimu Hari ini</h2>
             <form id="task-form">
                 <label for="task-input">Tulis Target Yang Ingin Kamu Capai</label>
                 <textarea id="task-input" required></textarea>
-
                 <label for="priority-input">Level Prioritas</label>
                 <div class="select-wrapper">
                     <select id="priority-input">
@@ -41,20 +37,16 @@
                         <option value="high">High</option>
                     </select>
                 </div>
-
                 <label for="deadline-input">Deadline</label>
                 <input type="date" id="deadline-input" required>
-
                 <button type="submit" class="pixel-block bg-brand-red submit-btn">SUBMIT</button>
             </form>
         </section>
-
         <section class="pixel-block bg-brand-blue">
             <h2 class="section-title">To Do</h2>
             <div id="todo-list" class="task-container">
             </div>
         </section>
-
         <section class="pixel-block bg-brand-light-green">
             <div class="done-header">
                 <h2 class="section-title">Done</h2>
@@ -64,7 +56,6 @@
             </div>
         </section>
     </div>
-
     <script src="script.js"></script>
 </body>
 
